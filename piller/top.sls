@@ -1,4 +1,4 @@
 base:
   '*'
-    - match: compind
+    - match: compound
     - mysql
