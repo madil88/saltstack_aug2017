@@ -20,3 +20,12 @@ install_apache_file:
    - mode: 644
    - require:
      - pkg: install_apache
+install_apache_conf:
+   file.managed:
+    - name: /etc/apache2/apache2.conf
+    - source: salt://apache/conf/apache2.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: install_apache

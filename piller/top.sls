@@ -1,0 +1,4 @@
+base:
+  '*'
+    - match: compind
+    - mysql
