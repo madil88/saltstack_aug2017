@@ -1,13 +1,17 @@
-madil:
+testo_user:
  user.present:
-   - fullname: M Adil
+   - fullname: testo
+   - name: testo
+   - password: $6$syTw2Ndu$WdmMGIZ.iz96NXuixQUz8JezO5MjJ0uiguuVLZNmEjECNODLYOq.HK.j2x2JerYiA2OXtgOsQkgetPto.sDB./ 
    - shell: /bin/sh
-   - home: /home/madil
+   - home: /home/testo
    - groups:
      - sudo
-     
-
-/home/madil/.ssh/known_hosts:
-  file.managed:
-    - source: salt://user/known_hosts
-    - mode: 640
+{% for user,args in pillar['users'].iteritems() %}
+{{ user }}:
+ user.present:
+   - password: {{ args ['pwd'] }}
+   - shell: {{ args ['shell'] }}
+   - home: {{ args ['home'] }}
+   - groups: {{ args ['groups'] }}
+{% endfor %}

@@ -37,7 +37,7 @@ mysql:
 
 /etc/salt/minion.d/mysql.conf:
   file.managed:
-    - source: salt://mysql/mysql/conf/minion/mysql.conf
+    - source: salt://mysql/conf/minion/mysql.conf
     - user: root
     - group: root
     - mode: 640
