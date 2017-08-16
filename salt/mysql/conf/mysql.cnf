@@ -1,8 +1,0 @@
-[mysqld]
-
-. . .
-
-bind-address            = 
-{{ salt['network.interface_ip']('eth1') }}
-
-skip-name-resolve
