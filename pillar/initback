@@ -1,0 +1,13 @@
+mysql:
+ users:
+   bob:
+      databse: db4test1
+      pass: bobpass
+   john:
+     database: db4test2
+     pass: johnpass
+   smith:
+     databse: db4test3
+     pass: smithpass
+   
+  
