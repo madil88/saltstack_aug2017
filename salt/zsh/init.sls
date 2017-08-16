@@ -2,6 +2,9 @@ git:
   pkg:
     - installed
 
+git-core:
+  pkg:
+   - installed
 # Install ZShell
 
 zsh:
@@ -11,11 +14,9 @@ zsh:
 # Clone oh-my-zsh
 
 oh_my_zsh:
-  git.latest:
-    - name: git://github.com/robbyrussell/oh-my-zsh.git
-    - target: /home/vagrant/.oh-my-zsh
-    - require:
-      - pkg: .git
-      - pkg: .zsh
-
-
+ cmd.run:
+  - name: 'wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh'
+  - require:
+    - pkg: git
+    - pkg: git-core
+    - pkg: zsh

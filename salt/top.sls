@@ -1,4 +1,4 @@
 base:
  '*':
-   - user
+   - mysql 
  

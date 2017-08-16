@@ -1,13 +1,23 @@
 install_mysql:
  pkg.installed:
    - name: mysql-server
-   - name: mysql-client
-   - name: mysql.python
+   - start: True
+   - enable: True
+
+file_conf:
+ file.managed:
+   - name: /etc/mysql/mysql.conf.d/mysqld.cnf
+   - source: salt://mysql/conf/mysql.conf.d/mysqld.cnf
+   - require:
+      - pkg: install_mysql
 
 service_mysql:
- service.running:
+ service:
+   - running
    - name: mysql
-   - enable: True
+   - restart: True
+   - watch:
+     - file: file_conf
    - require:
      - pkg: install_mysql
 
