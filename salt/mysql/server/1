@@ -8,7 +8,13 @@ python-mysqldb:
     - installed
 
 mysql-server:
-  pkg.installed: []
-  service.running:
+  pkg:
+    - installed
+
+mysql_conf:
+  service.running
+    - pkg: mysql-server
+    - enable: True
+    - restart: True
     - require:
       - pkg: mysql-server

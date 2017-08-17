@@ -1,0 +1,21 @@
+debconf-utils:
+	pkg
+		- installed
+
+
+python-mysqldb:
+	pkg
+		- installed
+
+mysql-server:
+	pkg
+		- installed
+
+mysql_conf:
+	service
+		- running
+      			- pkg: mysql
+     	 		- enable: True
+      			- restart: True
+			- require:
+				- pkg: mysql-server
