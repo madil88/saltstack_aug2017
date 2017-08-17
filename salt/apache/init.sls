@@ -1,7 +1,9 @@
 {% if grains['os'] == 'RedHat' %}
 {% set apache =  'httpd' %}
+{% set conf = '/etc/apache2/apache2.conf' %}
 {% elif grains['os'] == 'Ubuntu' %}
 {% set apache =  'apache2' %}
+{% set conf = '/etc/httpd/httpd.conf' %}
 {% endif %}
 
 install_apache:
@@ -28,7 +30,7 @@ install_apache_file:
      - pkg: install_apache
 install_apache_conf:
    file.managed:
-    - name: /etc/apache2/apache2.conf
+    - name: {{ conf }}
     - source: salt://apache/conf/apache2.conf
     - user: root
     - group: root
